@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CLEANCITY | Productos de Limpieza Profesional - Culiacán, Sinaloa</title>
+  <style>
+    /* Variables CSS para coherencia visual */
+    :root {
+      --primary: #0a2e5c;
+      --secondary: #1a6bb8;
+      --accent: #e67e22;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #28a745;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 2rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(10, 46, 92, 0.8), rgba(10, 46, 92, 0.9)), url('https://images.unsplash.com/photo-1589998059179-19dd0aee51b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .btn:hover {
+      background-color: #d35400;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.3);
+    }
+
+    section {
+      padding: 6rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .products {
+      background-color: #f0f4f8;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .product-info {
+      padding: 1.8rem;
+    }
+
+    .product-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+
+    .product-info p {
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
+
+    .mission {
+      text-align: center;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .mission-item {
+      padding: 2rem;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .mission-item h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .mission-item p {
+      color: #555;
+    }
+
+    .contact {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-info h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      height: 150px;
+    }
+
+    footer {
+      background-color: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      margin: 1.5rem 0;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav ul li {
+        margin: 0.5rem 0.8rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .about-grid,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        margin-top: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="logo.png" alt="Logo CLEANCITY Cleaning Products" />
+        <div class="logo-text">CLEAN<span>CITY</span></div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Inicio</a></li>
+          <li><a href="#about">Quiénes Somos</a></li>
+          <li><a href="#products">Productos</a></li>
+          <li><a href="#mission">Nuestra Misión</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Productos de Limpieza Profesional para tu Hogar y Negocio</h1>
+      <p>En CLEANCITY, ofrecemos soluciones de limpieza innovadoras, ecológicas y eficaces, diseñadas en Culiacán, Sinaloa, para elevar los estándares de higiene en toda la región.</p>
+      <a href="#products" class="btn">Descubre Nuestros Productos</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Quiénes Somos</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h3>Excelencia en Limpieza desde 2018</h3>
+          <p>CLEANCITY Cleaning Products es una empresa sinaloense comprometida con la salud, el medio ambiente y la calidad. Fundada en Culiacán, hemos crecido al ritmo de las necesidades de hogares, hospitales, escuelas y empresas que exigen resultados impecables sin comprometer la seguridad.</p>
+          <p>Nuestros productos son formulados con ingredientes de alta pureza, biodegradables y libres de químicos agresivos, garantizando eficacia sin dañar la piel ni el entorno. Trabajamos con laboratorios certificados y seguimos normas internacionales de higiene y sostenibilidad.</p>
+          <p>Con más de 5,000 clientes satisfechos en Sinaloa y Baja California, nos enorgullece ser la opción confiable de quienes buscan lo mejor.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1589998059179-19dd0aee51b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Equipo CLEANCITY en su laboratorio en Culiacán">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nuestros Productos</h2>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1587829775623-f5e5866128c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="product-info">
+            <h3>LimpiaTodo Multiusos</h3>
+            <p>Desinfectante de uso general para pisos, encimeras y superficies duras. Elimina el 99.9% de bacterias.</p>
+            <span class="price">$129.00 MXN</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1573165792455-51280b5943b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="product-info">
+            <h3>Brillantex Cristales</h3>
+            <p>Amarillo brillante sin manchas. Ideal para ventanas, espejos y cristales. Sin amoniaco ni trazas de olores fuertes.</p>
+            <span class="price">$95.00 MXN</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1584342215729-d77a74319543?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="product-info">
+            <h3>SanitizaPro Lavandería</h3>
+            <p>Detergente concentrado con acción antibacteriana, apto para telas sensibles y bebés. Fragancia suave de lavanda.</p>
+            <span class="price">$185.00 MXN</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1560750589-8e3e21822973?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="product-info">
+            <h3>Desodorizante Ambiental Natural</h3>
+            <p>Elimina olores persistentes en baños, cocinas y áreas comunes. Fórmula 100% vegetal y libre de aerosoles.</p>
+            <span class="price">$145.00 MXN</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1589998059179-19dd0aee51b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="product-info">
+            <h3>Kit Profesional para Hospitales</h3>
+            <p>Conjunto completo con desinfectantes de alto nivel, guantes y mascarillas reutilizables. Certificado por COFEPRIS.</p>
+            <span class="price">$899.00 MXN</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="product-info">
+            <h3>Recargas Ecológicas</h3>
+            <p>Reduzca su huella plástica. Nuestras recargas reducen hasta un 70% de residuos. Compatible con todos nuestros envases.</p>
+            <span class="price">$65.00 MXN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section id="mission" class="mission">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nuestra Misión y Visión</h2>
+      </div>
+      <div class="mission-grid">
+        <div class="mission-item">
+          <h3>Misión</h3>
+          <p>Proporcionar soluciones de limpieza innovadoras, seguras y sostenibles que mejoren la calidad de vida de las personas en Culiacán y más allá, sin comprometer el medio ambiente ni la salud pública.</p>
+        </div>
+        <div class="mission-item">
+          <h3>Visión</h3>
+          <p>Ser la marca líder en productos de limpieza ecológica del noroeste de México para 2030, reconocida por nuestra excelencia técnica, ética empresarial y compromiso comunitario.</p>
+        </div>
+        <div class="mission-item">
+          <h3>Valores</h3>
+          <p>Integridad, Innovación, Sostenibilidad, Calidad y Servicio al Cliente. Cada producto lleva nuestro compromiso de hacer lo correcto, siempre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contáctanos</h2>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Ubícate con Nosotros</h3>
+          <p><strong>Dirección:</strong> Av. Paseo de la República 1234, Col. Centro, Culiacán, Sinaloa, C.P. 80000</p>
+          <p><strong>Teléfono:</strong> +52 (667) 789-4567</p>
+          <p><strong>Email:</strong> info@cleancity.mx</p>
+          <p><strong>Horario:</strong> Lunes a Viernes: 8:00 AM - 6:00 PM | Sábados: 9:00 AM - 2:00 PM</p>
+          <p>¿Eres distribuidor? ¡Contáctanos! Ofrecemos precios mayoristas y logística local.</p>
+          <a href="mailto:info@cleancity.mx" class="btn" style="margin-top: 2rem;">Escribirnos Ahora</a>
+        </div>
+        <form class="contact-form">
+          <input type="text" placeholder="Tu nombre completo" required>
+          <input type="email" placeholder="Tu correo electrónico" required>
+          <input type="tel" placeholder="Tu teléfono">
+          <textarea placeholder="¿Cómo podemos ayudarte?" required></textarea>
+          <button type="submit" class="btn">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 CLEANCITY Cleaning Products. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#home">Inicio</a>
+      <a href="#about">Quiénes Somos</a>
+      <a href="#products">Productos</a>
+      <a href="#mission">Misión</a>
+      <a href="#contact">Contacto</a>
+    </div>
+    <p>Hecho con pasión en Culiacán, Sinaloa — Por una comunidad más limpia y saludable.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Form submission handler
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Gracias por contactarnos! En breve nos pondremos en contacto contigo.');
+      this.reset();
+    });
+
+    // Add active class to current section in nav (simple version)
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
